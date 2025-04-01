@@ -1,19 +1,12 @@
 package com.example.blagovestkabov.auth_service.service;
 
-import com.example.blagovestkabov.auth_service.config.SecurityConfig;
 import com.example.blagovestkabov.auth_service.model.User;
 import com.example.blagovestkabov.auth_service.repository.AuthenticationRepository;
-import org.json.JSONObject;
-//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class AuthenticationService {
@@ -46,7 +39,6 @@ public class AuthenticationService {
         Authentication authentication
                 = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
-//        var loggedUser = authenticationRepository.findByUsername(user.getUsername());
         if (authentication.isAuthenticated())
             return jwtService.generateToken(user);
         return "fail with the login";

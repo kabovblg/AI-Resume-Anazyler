@@ -5,9 +5,6 @@ import com.example.blagovestkabov.auth_service.repository.AuthenticationReposito
 import com.example.blagovestkabov.auth_service.service.AuthenticationService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-import java.util.Objects;
-
 @RestController
 @RequestMapping("/auth")
 public class AuthenticationController {

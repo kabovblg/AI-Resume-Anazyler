@@ -1,0 +1,23 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: CLOUD-GATEWAY
+  config:
+    import: configserver:http://localhost:9296
+  cloud:
+    gateway:
+      routes:
+        - id: AUTH-SERVICE
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/auth/**
+        - id: RESUME-SERVICE
+          uri: lb://RESUME-SERVICE
+          predicates:
+            - Path=/resume/**
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
